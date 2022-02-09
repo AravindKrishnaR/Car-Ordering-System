@@ -34,6 +34,8 @@ public class Dealer {
 	public String getDealershipName() {
 		return dealershipName;
 	}
+	
+	hello
 
 	public void setDealershipName(String dealershipName) {
 		this.dealershipName = dealershipName;
