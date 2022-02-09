@@ -1,9 +1,14 @@
 package com.training.springboot.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Dealer {
+	@Id
 	private String username;
-	private String dealershipName;
-	private String dealershipAddress;
+	private String dealerName;
+	private String dealerAddress;
 	private String email;
 	private String phno;
 	private String password;
@@ -16,8 +21,8 @@ public class Dealer {
 			String password) {
 		super();
 		this.username = username;
-		this.dealershipName = dealershipName;
-		this.dealershipAddress = dealershipAddress;
+		this.dealerName = dealershipName;
+		this.dealerAddress = dealershipAddress;
 		this.email = email;
 		this.phno = phno;
 		this.password = password;
@@ -32,19 +37,19 @@ public class Dealer {
 	}
 
 	public String getDealershipName() {
-		return dealershipName;
+		return dealerName;
 	}
 
 	public void setDealershipName(String dealershipName) {
-		this.dealershipName = dealershipName;
+		this.dealerName = dealershipName;
 	}
 
 	public String getDealershipAddress() {
-		return dealershipAddress;
+		return dealerAddress;
 	}
 
 	public void setDealershipAddress(String dealershipAddress) {
-		this.dealershipAddress = dealershipAddress;
+		this.dealerAddress = dealershipAddress;
 	}
 
 	public String getEmail() {
