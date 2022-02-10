@@ -10,16 +10,18 @@ public class Car {
 	private int modelNo;
 	private String carName;
 	private String category;
+	private String dealerUsername;
 
 	public Car() {
 		super();
 	}
 
-	public Car(int modelNo, String carName, String category) {
+	public Car(int modelNo, String carName, String category, String dealerUsername) {
 		super();
 		this.modelNo = modelNo;
 		this.carName = carName;
 		this.category = category;
+		this.dealerUsername = dealerUsername;
 	}
 
 	public int getModelNo() {
@@ -44,6 +46,14 @@ public class Car {
 
 	public void setCategory(String category) {
 		this.category = category;
+	}
+
+	public String getDealerUsername() {
+		return dealerUsername;
+	}
+
+	public void setDealerUsername(String dealerUsername) {
+		this.dealerUsername = dealerUsername;
 	}
 
 }
