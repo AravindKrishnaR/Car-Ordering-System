@@ -27,7 +27,7 @@ public class UserController {
 		
 		User user = userService.viewUserById(username);
 		
-		if(user.getPassword() == password) {
+		if(user.getPassword().equals(password)) {
 			System.out.println("Login successful!");
 			return user;
 		}

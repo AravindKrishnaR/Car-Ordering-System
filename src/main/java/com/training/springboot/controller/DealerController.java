@@ -28,7 +28,7 @@ public class DealerController {
 
 		Dealer dealer = dealerService.viewDealerById(username);
 
-		if (dealer.getPassword() == password) {
+		if (dealer.getPassword().equals(password)) {
 			System.out.println("Login successful!");
 			return dealer;
 		}
