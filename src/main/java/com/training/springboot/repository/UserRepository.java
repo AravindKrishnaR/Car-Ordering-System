@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.training.springboot.model.User;
 
-public interface UserRepo extends CrudRepository <User, String>{
+public interface UserRepository extends CrudRepository <User, String>{
 
 }
