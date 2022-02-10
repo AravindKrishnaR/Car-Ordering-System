@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +23,12 @@ public class UserController {
 	@Autowired
 	UserService userService;
 	
+	PasswordEncoder pass;
+	
+	public UserController() {
+		this.pass = new BCryptPasswordEncoder();
+	}
+	
 	@PostMapping("/login/user")
 	private User getDealer(@RequestBody Map<String, String> json) {
 		String username = json.get("username");
@@ -28,7 +36,8 @@ public class UserController {
 		
 		User user = userService.viewUserById(username);
 		
-		if(user.getPassword().equals(password)) {
+		
+		if(pass.matches(password, user.getPassword())) {
 			System.out.println("Login successful!");
 			return user;
 		}

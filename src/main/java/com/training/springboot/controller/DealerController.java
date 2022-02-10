@@ -21,7 +21,7 @@ public class DealerController {
 
 	@Autowired
 	DealerService dealerService;
-
+	
 	@PostMapping("/login/dealer")
 	private Dealer getDealer(@RequestBody Map<String, String> json) {
 		String username = json.get("username");
@@ -29,7 +29,7 @@ public class DealerController {
 
 		Dealer dealer = dealerService.viewDealerById(username);
 
-		if (dealer.getPassword().equals(password)) {
+		if(dealer.getPassword().equals(password)) {
 			System.out.println("Login successful!");
 			return dealer;
 		}
@@ -51,15 +51,13 @@ public class DealerController {
 	}
 
 	@PostMapping("/dealers")
-	@ResponseBody
-	private String addDealer(Dealer dealer) {
+	private String addDealer(@RequestBody Dealer dealer) {
 		dealerService.addOrUpdateDealer(dealer);
 		return "Dealer added successfully!";
 	}
 
 	@PutMapping("/dealers")
-	@ResponseBody
-	private String updateDealer(Dealer dealer) {
+	private String updateDealer(@RequestBody Dealer dealer) {
 		dealerService.addOrUpdateDealer(dealer);
 		return "Dealer updated successfully!";
 	}
