@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.training.springboot.model.Dealer;
@@ -50,13 +51,15 @@ public class DealerController {
 	}
 
 	@PostMapping("/dealers")
-	private String addDealer(@RequestBody Dealer dealer) {
+	@ResponseBody
+	private String addDealer(Dealer dealer) {
 		dealerService.addOrUpdateDealer(dealer);
 		return "Dealer added successfully!";
 	}
 
 	@PutMapping("/dealers")
-	private String updateDealer(@RequestBody Dealer dealer) {
+	@ResponseBody
+	private String updateDealer(Dealer dealer) {
 		dealerService.addOrUpdateDealer(dealer);
 		return "Dealer updated successfully!";
 	}

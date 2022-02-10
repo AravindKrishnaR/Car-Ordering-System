@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.training.springboot.model.Orders;
@@ -19,17 +19,18 @@ public class OrderController {
 	OrderService orderService;
 	
 	@PostMapping("/dealers/orders")
-	private void placeOrder(@RequestBody Orders order) {
+	@ResponseBody
+	private void placeOrder(Orders order) {
 		orderService.placeOrder(order);
 	}
 	
 	@GetMapping("/users/orders/{username}")
-	private List<Orders> viewCustomerOrders(@PathVariable String username) {
+	private List<Orders> viewUserOrders(@PathVariable String username) {
 		return orderService.viewUserOrders(username);
 	}
 	
 	@GetMapping("/dealers/orders/{username}")
-	private List<Orders> viewRestaurantOrders(@PathVariable String username) {
+	private List<Orders> viewDealerOrders(@PathVariable String username) {
 		return orderService.viewDealerOrders(username);
 	}
 }

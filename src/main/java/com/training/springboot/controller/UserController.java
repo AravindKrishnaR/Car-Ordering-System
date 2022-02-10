@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.training.springboot.model.User;
@@ -49,13 +50,15 @@ public class UserController {
 	}
 	
 	@PostMapping("/users")
-	private String addUser(@RequestBody User user) {
+	@ResponseBody
+	private String addUser(User user) {
 		userService.addOrUpdateUser(user);
 		return "User added successfully!";
 	}
 	
 	@PutMapping("/users")
-	private String updateUser(@RequestBody User user) {
+	@ResponseBody
+	private String updateUser(User user) {
 		userService.addOrUpdateUser(user);
 		return "User updated successfully!";
 	}

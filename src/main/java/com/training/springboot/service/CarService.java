@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.training.springboot.model.Car;
 import com.training.springboot.repository.CarRepository;
 
+@Service
 public class CarService {
 
 	@Autowired
