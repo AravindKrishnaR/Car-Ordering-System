@@ -39,7 +39,7 @@ public class CarController {
 	@GetMapping("/car/categories/{category}")
 	public List<Car> viewCarByCategory(@PathVariable String category)
 	{
-		return carService.viewCarByDealerName(category);
+		return carService.viewCarByCategory(category);
 	}
 	
 	// View car category
