@@ -17,7 +17,7 @@ public class User {
 	private String email;
 	
 	@NotBlank(message = "Phone number cannot be blank")
-	@Pattern(regexp = "^[0-9]{10}",message = "Invalid phone number")
+	@Pattern(regexp = "^[6789]\\d{9}$", message = "Invalid phone number")
 	private String phno;
 	
 	@NotBlank(message = "Password cannot be blank")
