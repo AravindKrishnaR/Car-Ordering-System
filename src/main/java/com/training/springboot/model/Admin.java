@@ -2,12 +2,19 @@ package com.training.springboot.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Admin {
 	@Id
 	private String username;
+	
+	@NotBlank(message = "Email cannot be blank")
+	@Email(message = "Invalid email")
 	private String email;
+	
+	@NotBlank(message = "Password cannot be blank")
 	private String password;
 
 	public Admin() {

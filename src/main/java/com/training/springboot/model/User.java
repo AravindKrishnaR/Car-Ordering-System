@@ -2,13 +2,25 @@ package com.training.springboot.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 @Entity
 public class User {
 	@Id
+	@NotBlank(message = "Username cannot be blank")
 	private String username;
+	
+	@NotBlank(message = "Email cannot be blank")
+	@Email(message = "Invalid email")
 	private String email;
+	
+	@NotBlank(message = "Phone number cannot be blank")
+	@Pattern(regexp = "^[0-9]{10}",message = "Invalid phone number")
 	private String phno;
+	
+	@NotBlank(message = "Password cannot be blank")
 	private String password;
 
 	public User() {

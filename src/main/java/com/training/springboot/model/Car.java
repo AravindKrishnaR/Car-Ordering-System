@@ -2,14 +2,22 @@ package com.training.springboot.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Car {
 
 	@Id
+	@NotBlank(message = "Model number cannot be blank")
 	private int modelNo;
+	
+	@NotBlank(message = "Car name cannot be blank")
 	private String carName;
+	
+	@NotBlank(message = "Car category cannot be blank")
 	private String category;
+	
+	@NotBlank(message = "Dealer username cannot be blank")
 	private String dealerUsername;
 
 	public Car() {

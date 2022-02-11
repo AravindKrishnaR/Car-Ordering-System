@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Orders {
@@ -11,7 +12,11 @@ public class Orders {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int orderId;
+	
+	@NotBlank(message = "Dealer username cannot be blank")
 	private String username;
+	
+	@NotBlank(message = "Car model number cannot be blank")
 	private int modelNo;
 
 	public Orders() {
