@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.training.springboot.model.Dealer;
@@ -26,7 +28,16 @@ public class DealerService {
 		return dealerList;
 	}
 
+	PasswordEncoder password;
+
+	public DealerService() {
+		this.password = new BCryptPasswordEncoder();
+	}
+
 	public void addOrUpdateDealer(Dealer dealer) {
+		dealerRepository.save(dealer);
+		String password = this.password.encode(dealer.getPassword());
+		dealer.setPassword(password);
 		dealerRepository.save(dealer);
 	}
 

@@ -27,6 +27,7 @@ public class Dealer {
 	private String phno;
 	
 	@NotBlank(message = "Password cannot be blank")
+	@Pattern(regexp = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}", message = "Password length must be atleast 8 characters and must contain atleast 1 digit, 1 lowercase alphabet, 1 uppercase alphabet, 1 special character and no white spaces.")
 	private String password;
 
 	public Dealer() {

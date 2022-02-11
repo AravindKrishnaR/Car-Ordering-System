@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,7 +22,13 @@ public class DealerController {
 
 	@Autowired
 	DealerService dealerService;
-	
+
+	PasswordEncoder pass;
+
+	public DealerController() {
+		this.pass = new BCryptPasswordEncoder();
+	}
+
 	@PostMapping("/login/dealer")
 	private Dealer getDealer(@RequestBody Map<String, String> json) {
 		String username = json.get("username");
@@ -28,7 +36,7 @@ public class DealerController {
 
 		Dealer dealer = dealerService.viewDealerById(username);
 
-		if(dealer.getPassword().equals(password)) {
+		if (pass.matches(password, dealer.getPassword())) {
 			System.out.println("Login successful!");
 			return dealer;
 		}
