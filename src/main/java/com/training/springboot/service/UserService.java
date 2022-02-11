@@ -35,6 +35,7 @@ public class UserService {
 	}
 	
 	public void addOrUpdateUser(User user) {
+		userRepository.save(user);
 		String password = this.password.encode(user.getPassword());
 		user.setPassword(password);
 		userRepository.save(user);
