@@ -24,7 +24,7 @@ public class OrderService {
 	@Transactional
 	public void placeOrder(Orders order) throws Exception {
 		int quantity = carRepository.getCarQuantity(order.getModelNo());
-		int version  = carRepository.getVersion(order.getModelNo());
+		Long version  = carRepository.getVersion(order.getModelNo());
 		
 		if(quantity > 0) {
 			carRepository.updateCarQuantity(order.getModelNo(), version);
@@ -39,7 +39,8 @@ public class OrderService {
 
 	public List<Orders> viewUserOrders(String username) {
 		List<Orders> orderList = new ArrayList<Orders>();
-		orderRepository.viewUserOrders(username).forEach(order -> orderList.add(order));
+//		orderRepository.viewUserOrders(username).forEach(order -> orderList.add(order));
+		orderRepository.findByUsername(username).forEach(order -> orderList.add(order));
 
 		return orderList;
 	}

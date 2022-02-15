@@ -23,20 +23,23 @@ public class CarService {
 	// View car by dealer username
 	public List<Car> viewCarByDealerName(String dealerName) {
 		List<Car> carList = new ArrayList<Car>();
-		carRepository.viewCarByDealerUserName(dealerName).forEach(car -> carList.add(car));
+		//carRepository.viewCarByDealerUserName(dealerName).forEach(car -> carList.add(car));
+		carRepository.findByDealerUsername(dealerName).forEach(car -> carList.add(car));
 		return carList;
 	}
 
 	// View car by category
 	public List<Car> viewCarByCategory(String category) {
 		List<Car> carList = new ArrayList<Car>();
-		carRepository.viewCarByCategory(category).forEach(car -> carList.add(car));
+//		carRepository.viewCarByCategory(category).forEach(car -> carList.add(car));
+		carRepository.findByCategory(category).forEach(car -> carList.add(car));
 		return carList;
 	}
 	
 	//View car by model no
 	public Car viewCarByModelNo(String modelNo) {
-		return carRepository.viewCarByModelNo(modelNo);
+//		return carRepository.viewCarByModelNo(modelNo);
+		return carRepository.findByModelNo(modelNo);
 	}
 	
 

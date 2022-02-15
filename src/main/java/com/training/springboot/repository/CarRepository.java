@@ -11,14 +11,20 @@ import com.training.springboot.model.Car;
 
 public interface CarRepository extends CrudRepository<Car, Integer> {
 
-	@Query(value = "SELECT * FROM Car WHERE dealer_username = :dealerUsername ", nativeQuery = true)
-	List<Car> viewCarByDealerUserName(@Param("dealerUsername") String dealerUsername);
-
-	@Query(value = "SELECT * FROM Car WHERE category = :category ", nativeQuery = true)
-	List<Car> viewCarByCategory(@Param("category") String category);
+//	@Query(value = "SELECT * FROM Car WHERE dealer_username = :dealerUsername ", nativeQuery = true)
+//	List<Car> viewCarByDealerUserName(@Param("dealerUsername") String dealerUsername);
 	
-	@Query(value = "SELECT * FROM Car WHERE model_no = :modelNo ", nativeQuery = true)
-	Car viewCarByModelNo(@Param("modelNo") String modelNo);
+	List<Car> findByDealerUsername(String dealerUsername);
+
+//	@Query(value = "SELECT * FROM Car WHERE category = :category ", nativeQuery = true)
+//	List<Car> viewCarByCategory(@Param("category") String category);
+	
+	List<Car> findByCategory(String category);
+	
+//	@Query(value = "SELECT * FROM Car WHERE model_no = :modelNo ", nativeQuery = true)
+//	Car viewCarByModelNo(@Param("modelNo") String modelNo);
+	
+	Car findByModelNo(@Param("modelNo") String modelNo);
 
 	@Query(value = "SELECT DISTINCT Category FROM Car", nativeQuery = true)
 	List<String> viewCarCategory();
@@ -27,10 +33,10 @@ public interface CarRepository extends CrudRepository<Car, Integer> {
 	int getCarQuantity(@Param("modelNo")  String modelNo);
 	
 	@Query(value = "SELECT version FROM Car WHERE model_no = :modelNo ", nativeQuery = true)
-	int getVersion(@Param("modelNo")  String modelNo);
+	Long getVersion(@Param("modelNo")  String modelNo);
 	
 	@Modifying
 	@Query(value = "UPDATE Car SET quantity = quantity - 1, version = version + 1 WHERE model_no = :modelNo AND version = :version ")
-	void updateCarQuantity(@Param("modelNo")  String modelNo, @Param("version")  int version);
+	void updateCarQuantity(@Param("modelNo")  String modelNo, @Param("version")  Long version);
 
 }

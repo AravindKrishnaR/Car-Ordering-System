@@ -10,8 +10,10 @@ import com.training.springboot.model.Orders;
 
 public interface OrderRepository extends CrudRepository<Orders, Integer> {
 
-	@Query(value = "SELECT * from Orders WHERE username =:username ", nativeQuery = true)
-	List<Orders> viewUserOrders(@Param("username") String username);
+//	@Query(value = "SELECT * from Orders WHERE username =:username ", nativeQuery = true)
+//	List<Orders> viewUserOrders(@Param("username") String username);
+	
+	List<Orders> findByUsername(@Param("username") String username);
 
 	@Query(value = "SELECT * from Orders " + "JOIN Car ON Orders.model_no = Car.model_no "
 			+ "JOIN Dealer ON Car.dealer_username = Dealer.username "
