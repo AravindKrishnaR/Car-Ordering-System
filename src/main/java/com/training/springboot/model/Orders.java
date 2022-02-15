@@ -17,13 +17,13 @@ public class Orders {
 	private String username;
 	
 	@NotBlank(message = "Car model number cannot be blank")
-	private int modelNo;
+	private String modelNo;
 
 	public Orders() {
 		super();
 	}
 
-	public Orders(int orderId, String username, int modelNo) {
+	public Orders(int orderId, String username, String modelNo) {
 		super();
 		this.orderId = orderId;
 		this.username = username;
@@ -46,11 +46,11 @@ public class Orders {
 		this.username = username;
 	}
 
-	public int getModelNo() {
+	public String getModelNo() {
 		return modelNo;
 	}
 
-	public void setModelNo(int modelNo) {
+	public void setModelNo(String modelNo) {
 		this.modelNo = modelNo;
 	}
 }

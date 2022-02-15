@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,8 +22,7 @@ public class CarController {
 	
 	// Add car
 	@PostMapping("/dealer/cars")
-	@ResponseBody
-	public String addCar(Car car)
+	public String addCar(@RequestBody Car car)
 	{
 		carService.addCar(car);
 		return "Car Added Successfully!";
@@ -40,6 +40,12 @@ public class CarController {
 	public List<Car> viewCarByCategory(@PathVariable String category)
 	{
 		return carService.viewCarByCategory(category);
+	}
+	
+	//View car by model no
+	@GetMapping("/car/{modelNo}")
+	public Car viewCarByModelNo(@PathVariable String modelNo) {
+		return carService.viewCarByModelNo(modelNo);
 	}
 	
 	// View car category

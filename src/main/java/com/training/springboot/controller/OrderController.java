@@ -20,7 +20,7 @@ public class OrderController {
 	
 	@PostMapping("/dealers/orders")
 	@ResponseBody
-	private void placeOrder(Orders order) {
+	private void placeOrder(Orders order) throws Exception {
 		orderService.placeOrder(order);
 	}
 	

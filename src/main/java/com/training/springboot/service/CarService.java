@@ -33,6 +33,12 @@ public class CarService {
 		carRepository.viewCarByCategory(category).forEach(car -> carList.add(car));
 		return carList;
 	}
+	
+	//View car by model no
+	public Car viewCarByModelNo(String modelNo) {
+		return carRepository.viewCarByModelNo(modelNo);
+	}
+	
 
 	// View car category
 	public List<String> viewCarCategory() {
